@@ -18,7 +18,7 @@ local neighborhood minus an offset value.
 import matplotlib.pyplot as plt
 
 from skimage import data
-from skimage.filters import threshold_otsu, threshold_adaptive
+from skimage.filters import threshold_otsu, threshold_local
 
 
 image = data.page()
@@ -27,7 +27,7 @@ global_thresh = threshold_otsu(image)
 binary_global = image > global_thresh
 
 block_size = 35
-binary_adaptive = threshold_adaptive(image, block_size, offset=10)
+binary_adaptive = threshold_local(image, block_size, offset=10)
 
 fig, axes = plt.subplots(nrows=3, figsize=(7, 8))
 ax0, ax1, ax2 = axes
